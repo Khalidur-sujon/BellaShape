@@ -5,6 +5,7 @@ import Logo from "@/assets/Logo.png";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import ActionButton from "@/shared/ActionButton";
+import { motion } from "framer-motion";
 
 type Props = {
 	isTopOfPage: boolean;
@@ -76,7 +77,16 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
 
 			{/* mobile menu */}
 			{!isAboveMobileScreen && isMenuToggled && (
-				<div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-lg ">
+				<motion.div
+					className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-lg"
+					initial="hidden"
+					whileInView="visible"
+					transition={{ duration: 0.2 }}
+					variants={{
+						hidden: { opacity: 0, right: -50 },
+						visible: { opacity: 1, right: 0 },
+					}}
+				>
 					{/* close icon */}
 					<div className="flex justify-end p-12">
 						<button
@@ -108,7 +118,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
 							setSelectedPage={setSelectedPage}
 						/>
 					</div>
-				</div>
+				</motion.div>
 			)}
 		</nav>
 	);
