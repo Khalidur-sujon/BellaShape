@@ -7,6 +7,8 @@ import {
 } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Benefit from "./Benefit";
+import ActionButton from "@/shared/ActionButton";
+import BenefitsPageGraphic from "@/assets/BenefitsPageGraphic.png";
 
 const container = {
 	hidden: {},
@@ -83,6 +85,74 @@ const Benifits = ({ setSelectedPage }: Props) => {
 						/>
 					))}
 				</motion.div>
+				{/* graphics and description */}
+				<div className="mt-16 items-center justify-between gap-8 md:mt-28 md:flex">
+					{/* graphics */}
+					<img
+						src={BenefitsPageGraphic}
+						alt="benefits_page_graphic"
+						className="mx-auto"
+					/>
+					{/* description */}
+					<div>
+						{/* title */}
+						<div className="relative">
+							<div className="before:absolute before:-top-20 before:-left-20 before:content-abstractwaves">
+								<motion.div
+									initial="hidden"
+									whileInView="visible"
+									viewport={{ once: true, amount: 0.2 }}
+									transition={{ duration: 0.6 }}
+									variants={{
+										hidden: { opacity: 0, x: 50 },
+										visible: { opacity: 1, x: 0 },
+									}}
+								>
+									<Htext>
+										MILLIONS OF HAPPY MEMBERS GETTING{" "}
+										<span className="text-primary-500">
+											FIT.
+										</span>
+									</Htext>
+								</motion.div>
+							</div>
+						</div>
+						{/* description */}
+						<motion.div
+							initial="hidden"
+							whileInView="visible"
+							viewport={{ once: true, amount: 0.2 }}
+							transition={{ delay: 0.2, duration: 0.6 }}
+							variants={{
+								hidden: { opacity: 0, x: 50 },
+								visible: { opacity: 1, x: 0 },
+							}}
+						>
+							<p className="my-5">
+								Lorem ipsum, dolor sit amet consectetur
+								adipisicing elit. Nesciunt praesentium adipisci
+								excepturi dignissimos quae voluptatibus cum,
+								magni itaque ullam repudiandae sit laudantium
+								dolorum modi delectus sint magnam? Consequatur,
+								beatae. Ipsam.
+							</p>
+							<p className="my-5">
+								Lorem ipsum dolor sit amet consectetur
+								adipisicing elit. Recusandae, officia ducimus
+								dolor et doloremque incidunt quam quo veniam
+								amet illum in facilis, ipsum voluptas expedita!
+							</p>
+						</motion.div>
+						{/* button */}
+						<div className="relative my-16">
+							<div className="before:absolute before:-top-20 before:right-40 before:z-[-1] before:content-sparkles">
+								<ActionButton setSelectedPage={setSelectedPage}>
+									Join Now
+								</ActionButton>
+							</div>
+						</div>
+					</div>
+				</div>
 			</motion.div>
 		</section>
 	);
